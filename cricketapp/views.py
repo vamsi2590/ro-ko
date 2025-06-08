@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import requests
 from bs4 import BeautifulSoup
-from googlesearch import search
+
 
 def home(request):
     return render(request, 'index.html')
@@ -10,7 +10,7 @@ def home(request):
 from django.http import JsonResponse
 import requests
 from bs4 import BeautifulSoup
-from googlesearch import search
+
 def get_player(request, player_name):
     query = f"{player_name} site:cricbuzz.com/profiles"
     profile_link = None
