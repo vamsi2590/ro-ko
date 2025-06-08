@@ -1,0 +1,279 @@
+/* Enhanced Navbar */
+.navbar {
+    background: linear-gradient(90deg, #198754, #28a745);
+}
+.navbar-nav .nav-link:hover {
+    color: #f8f9fa;
+    text-decoration: underline;
+}
+.search-container {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/images/bg.jpg');
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-container .form-control {
+    border-radius: 50px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.search-container .btn {
+    border-radius: 50px;
+}
+
+/* Player Profile Section */
+.player-card {
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Live Scores and Schedule */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.live-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    animation: pulse 1.5s infinite;
+}
+
+.list-group-item {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.list-group-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(90deg, #343a40, #495057);
+}
+footer p {
+    margin-bottom: 0;
+}
+footer .social-icons a {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.2rem;
+}
+footer .social-icons a:hover {
+    color: #198754;
+}
+
+/* Custom CSS */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.player-card {
+    transition: transform 0.2s;
+    background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.player-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+.live-badge {
+    animation: pulse 1.5s infinite;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+}
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+.stat-table th {
+    background-color: #198754;
+    color: white;
+    font-weight: 500;
+}
+.search-container {
+    background: url('static/images/bg.jpg') center/cover;
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+    position: relative;
+}
+.search-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+.search-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+.section-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #198754;
+    border-bottom: 2px solid #198754;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+.player-image {
+    height: 100%;
+    object-fit: cover;
+}
+.loading-spinner {
+    display: none;
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Upcoming Matches Styling */
+.schedule-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    background: #f8f9fa;
+    padding: 1.5rem;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.schedule-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.schedule-card h5 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #198754;
+}
+
+.schedule-card small {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.schedule-card .match-details {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #495057;
+}
+
+/* Add this to your existing CSS */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.rotating {
+    animation: rotate 1s linear infinite;
+}
+
+/* Enhanced button styling */
+.btn-success {
+    background: linear-gradient(90deg, #198754, #28a745);
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(90deg, #157347, #218838);
+}
+
+/* Input group enhancements */
+.input-group {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.input-group .form-control {
+    border: none;
+    padding: 0.75rem 1.25rem;
+}
+
+.input-group .form-control:focus {
+    box-shadow: none;
+    border-color: #198754;
+}
+
+/* Player Comparison Separator */
+.player-vs-container {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.comparison-divider {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-color: #198754;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    z-index: 10;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.player-card-comparison {
+    border: 3px solid #198754;
+    transition: transform 0.2s;
+    background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.player-1-card {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.player-2-card {
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
