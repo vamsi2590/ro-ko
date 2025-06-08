@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: cricket-site
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn cricket_site.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: cricket_site.settings
+    plan: free

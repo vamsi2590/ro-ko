@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import requests
 from bs4 import BeautifulSoup
-from duckduckgo_search import ddg  # ✅ Using DuckDuckGo as a replacement
+from duckduckgo_search.ddg import search as ddg_search
+
 
 def home(request):
     return render(request, 'index.html')
@@ -13,7 +14,8 @@ def get_player(request, player_name):
     profile_link = None
 
     try:
-        results = ddg(query, max_results=5)
+        results = ddg_search(query, max_results=5)
+
         for r in results:
             if "cricbuzz.com/profiles/" in r['href']:
                 profile_link = r['href']
