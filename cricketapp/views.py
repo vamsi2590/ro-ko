@@ -2,33 +2,43 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import requests
 from bs4 import BeautifulSoup
-from duckduckgo_search.ddg import search as ddg_search
-
+from googlesearch import search
 
 def home(request):
     return render(request, 'index.html')
 
-
+from django.http import JsonResponse
+import requests
+from bs4 import BeautifulSoup
+from googlesearch import search
 def get_player(request, player_name):
-    query = f"{player_name} cricbuzz"
+    query = f"{player_name} site:cricbuzz.com/profiles"
     profile_link = None
 
     try:
-        results = ddg_search(query, max_results=5)
+        headers = {"User-Agent": "Mozilla/5.0"}
+        search_url = f"https://www.bing.com/search?q={query}"
+        response = requests.get(search_url, headers=headers)
+        soup = BeautifulSoup(response.text, "html.parser")
 
-        for r in results:
-            if "cricbuzz.com/profiles/" in r['href']:
-                profile_link = r['href']
+        results = soup.find_all('li', class_='b_algo')
+        for result in results:
+            a_tag = result.find('a')
+            href = a_tag['href'] if a_tag else ''
+            if "cricbuzz.com/profiles/" in href:
+                profile_link = href
                 break
+
         if not profile_link:
             return JsonResponse({"error": "No player profile found"})
+
     except Exception as e:
         return JsonResponse({"error": f"Search failed: {str(e)}"})
 
-    c = requests.get(profile_link).text
-    cric = BeautifulSoup(c, "lxml")
-
+    # Scrape profile as usual
     try:
+        c = requests.get(profile_link).text
+        cric = BeautifulSoup(c, "lxml")
         profile = cric.find("div", id="playerProfile")
         pc = profile.find("div", class_="cb-col cb-col-100 cb-bg-white")
 
@@ -90,6 +100,7 @@ def get_player(request, player_name):
         return JsonResponse({"error": f"Error parsing player profile: {str(e)}"})
 
 
+
 def schedule(request):
     link = "https://www.cricbuzz.com/cricket-schedule/upcoming-series/international"
     source = requests.get(link).text
@@ -102,18 +113,12 @@ def schedule(request):
         info = container.find("div", class_="cb-col-100 cb-col")
         if date and info:
             matches.append(f"{date.text.strip()} - {info.text.strip()}")
-
     return JsonResponse(matches, safe=False)
-
 
 def live_matches(request):
     link = "https://www.cricbuzz.com/cricket-match/live-scores"
     source = requests.get(link).text
     page = BeautifulSoup(source, "lxml")
     container = page.find("div", class_="cb-col cb-col-100 cb-bg-white")
-
-    if not container:
-        return JsonResponse([], safe=False)
-
     matches = container.find_all("div", class_="cb-scr-wll-chvrn cb-lv-scrs-col")
     return JsonResponse([m.text.strip() for m in matches], safe=False)

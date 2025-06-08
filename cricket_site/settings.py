@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-a4s)#ri32_5yp%js#yp(m58ekod-k0u#p6pl=j-5j99lepwu*#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mutualfundinfo.site','localhost',"https://ro-ko.onrender.com/"]
+ALLOWED_HOSTS = ['mutualfundinfo.site','127.0.0.1:8000',"https://ro-ko.onrender.com/",'127.0.0.1']
 
 
 # Application definition
