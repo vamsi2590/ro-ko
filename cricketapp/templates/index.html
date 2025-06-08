@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RO-KO - Live Scores & Stats</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/cricket_hub.css' %}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">🏏 RO-KO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#live">Live Scores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#schedule">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#search">Player Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#comparisonSection">Player Comparison</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Section -->
+    <div class="search-container" id="search">
+        <div class="container search-content">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h1 class="display-4 mb-4">Cricket Hub</h1>
+                    <p class="lead mb-4">Your one-stop destination for live scores, player stats, and match schedules</p>
+                    <div class="input-group mb-3">
+                        <input type="text" id="playerSearch" class="form-control form-control-lg"
+                               placeholder="Search player..."
+                               aria-label="Player search">
+                        <button class="btn btn-success btn-lg" onclick="searchPlayer()">
+                            <i class="fas fa-search me-1"></i> Search
+                            <span id="searchSpinner" class="spinner-border spinner-border-sm loading-spinner" role="status"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Player Profile Section -->
+    <div class="container my-5" id="playerProfile" style="display: none;">
+        <!-- Dynamic content loaded by JavaScript -->
+    </div>
+
+    <!-- Player Comparison Section -->
+    <section class="container my-5" id="comparisonSection">
+        <h2 class="section-title">Player Comparison</h2>
+        <div class="input-group mb-3">
+            <input type="text" id="player1Search" class="form-control form-control-lg"
+                placeholder="Player 1 Name" aria-label="Player 1 search">
+            <input type="text" id="player2Search" class="form-control form-control-lg"
+                placeholder="Player 2 Name" aria-label="Player 2 search">
+            <button class="btn btn-success btn-lg" onclick="comparePlayers()">
+                <i class="fas fa-balance-scale me-1"></i> Compare Players
+                <span id="compareSpinner" class="spinner-border spinner-border-sm loading-spinner" role="status"></span>
+            </button>
+        </div>
+        <div class="container my-5" id="playerComparison" style="display: none;">
+            <!-- Dynamic comparison content will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Live Scores Section -->
+    <section class="container my-5" id="live">
+        <h2 class="section-title">Live Matches</h2>
+        <div id="liveScores" class="row g-4">
+            <div class="col-12 text-center">
+                <div class="spinner-border text-success loading-spinner" id="liveSpinner" role="status"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="container my-5" id="schedule">
+        <h2 class="section-title">Upcoming Matches</h2>
+        <div id="scheduleList" class="row g-4">
+            <div class="col-12 text-center">
+                <div class="spinner-border text-success loading-spinner" id="scheduleSpinner" role="status"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p>© RO-KO | UNOFFICAL API LOL </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/cricket_hub.js' %}"></script>
+</body>
+</html>
